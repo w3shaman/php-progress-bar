@@ -2,6 +2,20 @@
 // Start the session.
 session_start();
 
+// We have to make sure there is no garbage left here.
+// Failed process will leave the file undeleted.
+// So, we need to delete the file that older than 2 days.
+$files = glob("tmp/*");
+$now   = time();
+
+foreach ($files as $file) {
+  if (is_file($file)) {
+    if ($now - filemtime($file) >= 60 * 60 * 24 * 2) { // 2 days and older
+      unlink($file);
+    }
+  }
+}
+
 // The example total processes.
 $total = 20;
 
