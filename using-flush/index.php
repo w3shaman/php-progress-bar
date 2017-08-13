@@ -9,6 +9,21 @@
 <!-- Progress information -->
 <div id="information" style="width"></div>
 <?php
+/**
+ * The long running PHP process should be placed here before we close
+ * the <body> and <html> tags.
+ *
+ * In the following demo, the long running process is simulated using
+ * basic loop with 1 second delay for each iteration.
+ */
+
+/**
+ * Set the maximum execution time to 5 minutes (300 seconds).
+ * We can flexibly adjust it to fit our need. If we need unlimited time,
+ * just set it to 0 but be carefull there will be performance impact.
+ */
+set_time_limit(300);
+
 // Total processes
 $total = 10;
 
